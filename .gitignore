@@ -1,0 +1,24 @@
+# Virtual environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS junk
+desktop.ini
+.DS_Store
+Thumbs.db
+
+# Data (συνήθως δεν ανεβάζουμε raw/processed)
+data/raw/
+data/processed/
+*.zip
+
+# Models & submissions outputs
+models/
+submissions/
