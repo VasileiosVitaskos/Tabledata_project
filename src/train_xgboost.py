@@ -151,9 +151,9 @@ def objective(trial, df, feature_cols):
     params = {
         'objective': 'reg:absoluteerror',  # MAE objective
         'eval_metric': 'mae',
-        'tree_method': 'gpu_hist',
-        'gpu_id': 0,
-        'predictor': 'gpu_predictor',
+        'tree_method': 'hist',
+        'device': 'cuda:0',
+        
         
         # Hyperparameters to tune
         'max_depth': trial.suggest_int('max_depth', 3, 12),
@@ -251,9 +251,8 @@ def train_with_optuna():
     best_params = {
         'objective': 'reg:absoluteerror',
         'eval_metric': 'mae',
-        'tree_method': 'gpu_hist',
-        'gpu_id': 0,
-        'predictor': 'gpu_predictor',
+        'tree_method': 'hist',
+        'device': 'cuda:0',
         'random_state': RANDOM_STATE,
         'verbosity': 0,
         **study.best_params

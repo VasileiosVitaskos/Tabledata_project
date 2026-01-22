@@ -169,7 +169,7 @@ def objective(trial, df, feature_cols):
         'bagging_temperature': trial.suggest_float('bagging_temperature', 0, 1),
         'random_strength': trial.suggest_float('random_strength', 0, 10),
         'border_count': trial.suggest_int('border_count', 32, 255),
-        'subsample': trial.suggest_float('subsample', 0.5, 1.0),
+        
         
         # Fixed
         'random_seed': RANDOM_STATE,
