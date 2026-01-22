@@ -152,7 +152,7 @@ def load_all_models():
         model_path = MODEL_DIRS['tabnet'] / f"tabnet_{fold_name}.zip"
         if model_path.exists():
             model = TabNetRegressor()
-            model.load_model(str(model_path).replace('.zip', ''))
+            model.load_model(str(model_path))
             tabnet_models.append(model)
             print(f"  ✓ Loaded {fold_name}")
     
@@ -300,7 +300,7 @@ def create_submission(predictions_df, poverty_df):
     
     # 1. Household consumption predictions
     household_csv = predictions_df[['survey_id', 'hhid', 'per_capita_household_consumption']].copy()
-    household_csv.columns = ['survey_id', 'household_id', 'per_capita_household_consumption']
+    household_csv.columns = ['survey_id', 'hhid', 'cons_ppp17']
     
     household_path = OUTPUT_DIR / "predicted_household_consumption.csv"
     household_csv.to_csv(household_path, index=False)
@@ -316,7 +316,7 @@ def create_submission(predictions_df, poverty_df):
     col_rename = {'survey_id': 'survey_id'}
     for t in POVERTY_THRESHOLDS:
         old_name = f"pct_hh_below_{t:.2f}".replace('.', '_')
-        new_name = f"pct_hh_below_{t}"
+        new_name = f"pct_hh_below_{t:.2f}"
         col_rename[old_name] = new_name
     
     poverty_csv.columns = [col_rename.get(c, c) for c in poverty_csv.columns]

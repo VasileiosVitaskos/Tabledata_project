@@ -37,7 +37,7 @@ ID_COLS = ["survey_id", "hhid"]
 SURVEY_IDS = [100000, 200000, 300000]
 
 # Optuna config
-N_TRIALS = 30  # TabNet is slower, so fewer trials
+N_TRIALS = 10  # TabNet is slower, so fewer trials
 RANDOM_STATE = 42
 
 # GPU
@@ -131,9 +131,9 @@ def train_tabnet_fold(X_train, y_train, w_train, X_val, y_val, w_val, params):
         eval_set=[(X_val, y_val.reshape(-1, 1))],
         eval_name=['valid'],
         eval_metric=['mae'],
-        max_epochs=1000,
-        patience=50,
-        batch_size=1024,
+        max_epochs=200,
+        patience=20,
+        batch_size=2048,
         virtual_batch_size=128,
         weights=w_train,
         drop_last=False

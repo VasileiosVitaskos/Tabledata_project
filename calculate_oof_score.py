@@ -126,7 +126,7 @@ def load_models():
                 model_path = model_dir / f"tabnet_{fold_name}.zip"
                 if model_path.exists():
                     model = TabNetRegressor()
-                    model.load_model(str(model_path).replace('.zip', ''))
+                    model.load_model(str(model_path))
                     model_list.append(model)
         
         models[model_type] = model_list
@@ -294,7 +294,7 @@ def calculate_competition_score(df, oof_predictions, poverty_gt):
         actual_rates_row = poverty_gt[poverty_gt['survey_id'] == survey_id].iloc[0]
         actual_rates = {}
         for threshold in POVERTY_THRESHOLDS:
-            col_name = f"pct_hh_below_{threshold}".replace('.', '_')
+            col_name = f"pct_hh_below_{threshold:.2f}"
             actual_rates[threshold] = actual_rates_row[col_name]
         
         # Calculate WMAPE for this survey

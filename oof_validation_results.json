@@ -1,0 +1,19 @@
+{
+  "oof_competition_score": 0.10236096579530786,
+  "wmape_poverty_rates": 0.08327200017206533,
+  "mape_consumption": 0.2741616564044906,
+  "by_survey": {
+    "100000": {
+      "mape_consumption": 0.2803311139222146,
+      "n_households": 32188
+    },
+    "200000": {
+      "mape_consumption": 0.2734560255985629,
+      "n_households": 34584
+    },
+    "300000": {
+      "mape_consumption": 0.26951217258653365,
+      "n_households": 37462
+    }
+  }
+}
